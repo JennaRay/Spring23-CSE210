@@ -24,42 +24,22 @@ public class Journal
         {   
             Console.WriteLine("File does not exist. New file created.");
             using (FileStream fs = File.Create(_fileName)){}
+            Load();
         }
         else 
         {
             using (StreamReader file = new StreamReader(_fileName))
             {
                 string[] lines = System.IO.File.ReadAllLines(_fileName);
-                List<string> entries = new List<string>();
-                int count = 0;
-                string date = "";
-                string prompt = "";
-                string content = "";
                 foreach (string line in lines)
                 {
-                    // string[] parts = line.Split("~~~");
-                    if (count + 1 == 4)
-                    {
-                        count = 1;
-                    }
-                    else
-                    {
-                        count += 1;
-                    }
-                    switch (count)
-                    {
-                        case 1:
-                            date = line;
-                            break;
-                        case 2:
-                            prompt = line;
-                            break;
-                        case 3:
-                            content = line;
-                            Entry entry = new Entry(date, prompt, content);
-                            _entries.Add(entry);
-                            break;
-                    }
+                    string[] parts = line.Split("~~~");
+                    string date = parts[0];
+                    string prompt = parts[1];
+                    string content = parts[2];
+                    
+                    Entry entry = new Entry(date, prompt, content);
+                    _entries.Add(entry);
                 }
             }
             _isLoaded = true;        
@@ -73,9 +53,7 @@ public class Journal
         {
             foreach (Entry entry in _entries)
             {
-                outputFile.WriteLine($"{entry._date}");
-                outputFile.WriteLine($"{entry._prompt}");
-                outputFile.WriteLine($"{entry._text}");
+                outputFile.WriteLine($"{entry._date}~~~{entry._prompt}~~~{entry._text}");
             }
         }
     }

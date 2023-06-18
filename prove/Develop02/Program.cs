@@ -35,6 +35,7 @@ class Program
                 else if (action == 3) 
                 {
                     Console.WriteLine("Enter file name: ");
+                    _journal = new Journal();
                     _journal._fileName = Console.ReadLine();
                     _journal.Load();
                 }
