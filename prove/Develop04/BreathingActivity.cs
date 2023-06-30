@@ -6,7 +6,7 @@ class BreathingActivity : Activity
 
     public BreathingActivity(string intro, string instructions) : base(intro, instructions)
     {
-
+        //covered in base class
     }
 
    public void Run()
@@ -24,11 +24,11 @@ class BreathingActivity : Activity
         {
             currentTime = DateTime.Now;
             Console.WriteLine();
-            Console.WriteLine("Breath in...");
+            Console.WriteLine("Breathe in...");
             Console.WriteLine();
             Pause(5000);
             Console.WriteLine();
-            Console.WriteLine("Breath out...");
+            Console.WriteLine("Breathe out...");
             Pause(5000);
         }
 

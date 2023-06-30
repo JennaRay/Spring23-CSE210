@@ -17,7 +17,8 @@ class Program
         {
             "Breath", 
             "Reflect", 
-            "List", 
+            "List",
+            "Sense",
             "Quit"
         };
         Console.WriteLine("What would you like to do?");
@@ -34,26 +35,34 @@ class Program
     private static void SelectFromMenu()
     {
         int choice = DisplayMenu();
-        if (choice == 1)
+        switch(choice)
         {
-            BreathingActivity breath1 = new BreathingActivity("Let's breath together", "This activity will help you relax by walking you through breathing in and out slowly. Clear your mind and focus on your breathing.");
-            breath1.Run();
+            case 1:
+                BreathingActivity breath1 = new BreathingActivity("Let's breathe together", "This activity will help you relax by walking you through breathing in and out slowly. Clear your mind and focus on your breathing.");
+                breath1.Run();
+                break;
+            case 2:
+                ReflectionActivity reflect1 = new ReflectionActivity("Lets reflect together", "This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.");
+                reflect1.Run();
+                break;
+            case 3:
+                ListingActivity list1 = new ListingActivity("Lets list together", "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.");
+                list1.Run();
+                break;
+            
+            case 4:
+                SensesActivity sense1 = new SensesActivity("Let's be present together", $"This activity will help you to be grounded in the present moment by having you tune into your senses.");
+                sense1.Run();
+                break;
+            
+            case 5:
+                _playing = false;
+                Console.WriteLine("Namaste");
+                break;
+            default:
+                Console.WriteLine("That wasn't a valid option");
+                break;
         }
-        else if (choice == 2)
-        {
-            ReflectionActivity reflect1 = new ReflectionActivity("Lets reflect together", "This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.");
-            reflect1.Run();
-        }
-        else if (choice == 3)
-        {
-            ListingActivity list1 = new ListingActivity("Lets list together", "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.");
-            list1.Run();
-        }
-        else if (choice == 4)
-        {
-            _playing = false;
-            Console.WriteLine("Namaste");
-        }
-        else {Console.WriteLine("That wasn't a valid option");};
+        
     }
 }

@@ -40,7 +40,7 @@ class Activity
         Console.Write("\b \b");
         Console.Write("/");
         Console.Write("\b \b");
-        i += 400;
+        i += 200;
         }
         
     }
@@ -65,7 +65,7 @@ class Activity
         DisplayMessage(true);
         _userTime = GetTime();
         Console.Write("Lets begin");
-        Pause(3000);
+        Pause(500);
         
     }
 

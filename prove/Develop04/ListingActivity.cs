@@ -15,7 +15,7 @@ class ListingActivity : Activity
     
     public ListingActivity(string intro, string instructions) : base(intro, instructions)
     {
-
+        //covered in base class
     }
 
     private string SelectPrompt()
