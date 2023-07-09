@@ -186,7 +186,7 @@ class GoalManager
     {
         using (StreamWriter outputFile = new StreamWriter(_FILENAME))
         {
-            outputFile.WriteLine(_score);
+            outputFile.WriteLine(_score + ":" + _level);
             foreach (Goal goal in _goals)
             {
                 outputFile.WriteLine(goal.GetStringRepresentation());
@@ -207,8 +207,10 @@ class GoalManager
         {
             counter += 1;
             if (counter == 1)
-            {
-                _score = int.Parse(line);
+            {   
+                string[] parts = line.Split(":");
+                _score = int.Parse(parts[0]);
+                _level = int.Parse(parts[1]);
             }
             string[] parts = line.Split(":");
             switch (parts[0])
