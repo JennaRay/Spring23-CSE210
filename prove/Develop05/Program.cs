@@ -2,8 +2,10 @@ using System;
 
 class Program
 {
+
+    static GoalManager _manager = new GoalManager();
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Develop05 World!");
+        _manager.Start();
     }
 }

@@ -1,0 +1,4 @@
+2950
+eternal:toast:think about toast:10
+eternal:nug:nug:100
+eternal:w:win:1000
