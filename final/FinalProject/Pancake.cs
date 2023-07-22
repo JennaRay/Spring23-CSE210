@@ -8,16 +8,45 @@ class Pancake
 
     public Pancake(string shape = "circle")
     {
-        
+        _shape = shape;
+
+    }
+
+    public int GetPoints()
+    {
+        int points = 0;
+        switch (_levelCooked)
+        {
+            case "raw":
+                points += -1;
+                break;
+            case "undercooked":
+                points += 1;
+                break;
+            case "cooked":
+                points += 3;
+                break;
+            case "overcooked":
+                points += 1;
+                break;
+            case "burnt":
+                points += -1;
+                break;
+        }
+        if (_topping is not null)
+        {
+            points += _topping.GetBoost();
+        }
+        return points;
     }
 
     public void Cook()
     {
         Console.WriteLine("Click enter when your pancake is done cooking");
-        string start = DateTime.Now.ToShortTimeString();
+        int start = System.DateTime.Now.Second;
         Console.ReadLine();
-        string end = DateTime.Now.ToShortTimeString();
-        int cook_time = int.Parse(end) - int.Parse(start);
+        int end = System.DateTime.Now.Second;
+        int cook_time = end - start;
             if (cook_time <= 5)
             {
                 _levelCooked = "raw";
@@ -42,14 +71,14 @@ class Pancake
             {
                 _levelCooked = "on fire! Get an extinguisher stat!";
             }
-            Console.WriteLine($"Your pancake is {_levelCooked}");
+        Console.WriteLine($"Your pancake is {_levelCooked}");
 
         
     }
 
-    public void Top(string top)
+    public void Top(Topping top)
     {
-        _topping = Top;
+        _topping = top;
         Console.WriteLine("Yum, good choice!");
     }
 }

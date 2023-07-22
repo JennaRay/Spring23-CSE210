@@ -8,7 +8,8 @@ class Simulator
     "Make Batter", 
     "Make Pancake", 
     "Eat Pancake", 
-    "Check Ingredients", 
+    "View Inventory", 
+    "Go to Store",
     "Quit"
     };
 
@@ -30,6 +31,8 @@ class Simulator
         Console.WriteLine();
         Console.WriteLine("Enter the number for the menu item you want to select.");
         PancakeManager game = new PancakeManager();
+        Store store = new Store();
+        User user = new User();
         bool playing = true;
         while (playing)
         {
@@ -46,12 +49,15 @@ class Simulator
                     game.MakePancakes();
                     break;
                 case 4:
-                    game.Eat();
+                    user.AddPoints(game.Eat());
                     break;
                 case 5:
                     game.CheckIngredients();
                     break;
                 case 6:
+                    store.GoShopping(game, user);
+                    break;
+                case 7:
                     Console.WriteLine("Thanks for playing!");
                     playing = false;
                     break;
